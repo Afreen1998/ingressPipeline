@@ -6,15 +6,11 @@ node {
         // 
     }
     stage('Deploy') { 
-        sh "pwd"
         sh "rm -rf ingress"
         sh "mkdir ingress"
         sh " git clone https://github.com/Afreen1998/ingressPipeline ingress"
         dir("ingress")
         {
-            sh "pwd"
-            sh "ls"
-            sh "kubectl get pods"
             sh "kubectl apply -f ingressResource"
         }
        
