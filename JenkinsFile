@@ -5,3 +5,4 @@ node {
     stage('Deploy') {
             sh "kubectl apply -f ingressResource.yml"
     }
+}
