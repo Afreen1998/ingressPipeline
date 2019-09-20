@@ -9,6 +9,8 @@ node {
         sh "mkdir -p ingress"
         sh " git clone https://github.com/Afreen1998/ingressPipeline ingress"
         sh "cd ingress"
+        sh "ls"
+        sh "kubectl get pods"
         sh "kubectl apply -f ingressResource"
     }
 }
