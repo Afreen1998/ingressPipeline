@@ -4,7 +4,7 @@ metadata:
   name: ingress
 spec:
   rules:
-  - host: exapmle3.com
+  - host: example3.com
     http:
       paths:
       - backend:
