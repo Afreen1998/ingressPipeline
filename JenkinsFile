@@ -8,7 +8,7 @@ node {
     stage('Deploy') { 
         sh "pwd"
         sh "rm -rf ingress"
-        sh "mkdir -p ingress"
+        sh "mkdir ingress"
         sh " git clone https://github.com/Afreen1998/ingressPipeline ingress"
         sh "cd ingress"
         sh "ls"
