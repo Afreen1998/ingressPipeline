@@ -5,10 +5,12 @@ node {
     stage('Test') { 
         // 
     }
-    stage('Deploy') { 
-        sh "rm -rf ingress"
-        sh "mkdir ingress"
-        sh " git clone https://github.com/Afreen1998/ingressPipeline ingress"
+    stage('Deploy') {
+        sh '''
+        rm -rf ingress
+        mkdir ingress
+        git clone https://github.com/Afreen1998/ingressPipeline ingress
+        '''
         dir("ingress")
         {
             sh "kubectl apply -f ingressResource.yml"
