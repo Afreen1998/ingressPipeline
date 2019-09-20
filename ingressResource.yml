@@ -22,11 +22,5 @@ spec:
       - backend:
           serviceName: nginx
           servicePort: 80
-  - host: example6.com
-    http:
-      paths:
-      - backend:
-          serviceName: nginx
-          servicePort: 80
-             
+ 
              
