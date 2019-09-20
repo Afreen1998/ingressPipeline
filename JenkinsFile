@@ -1,21 +1,10 @@
 node {  
-    stage('Build') { 
-        // 
-    }
-    stage('Test') { 
-        // 
+    stage('checkout') { 
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Afreen1998/ingressPipeline']]])
     }
     stage('Deploy') {
         pwd()
-        deleteDir()
-        sh '''
-        mkdir ingress
-        git clone https://github.com/Afreen1998/ingressPipeline ingress
-        '''
-        dir("ingress")
-        {
-            sh "kubectl apply -f ingressResource.yml"
-        }
+        sh "ls"
        
     }
 }
