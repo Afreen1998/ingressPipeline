@@ -6,8 +6,9 @@ node {
         // 
     }
     stage('Deploy') {
+        pwd()
+        deleteDir()
         sh '''
-        rm -rf ingress
         mkdir ingress
         git clone https://github.com/Afreen1998/ingressPipeline ingress
         '''
