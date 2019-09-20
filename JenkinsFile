@@ -3,8 +3,5 @@ node {
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Afreen1998/ingressPipeline']]])
     }
     stage('Deploy') {
-        pwd()
-        sh "ls"
-       
+            sh "kubectl apply -f ingressResource.yml"
     }
-}
