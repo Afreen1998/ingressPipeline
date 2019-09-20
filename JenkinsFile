@@ -13,10 +13,10 @@ node {
         dir("ingress")
         {
             sh "pwd"
-         }
+            sh "ls"
+            sh "kubectl get pods"
+            sh "kubectl apply -f ingressResource"
+        }
        
-        sh "ls"
-        sh "kubectl get pods"
-        sh "kubectl apply -f ingressResource"
     }
 }
