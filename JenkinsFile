@@ -1,25 +1,11 @@
-pipeline {
-    agent any 
-    stages {
-    stage('checkout') { 
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Afreen1998/ingressPipeline']]])
-            }
-        }
-        stage('Build') { 
-            steps {
-                echo "Build"
-            }
-        }
-        stage('Test') { 
-            steps {
-                echo "Build"
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                echo "Build"
-            }
-        }
+node {  
+    stage('Build') { 
+        // 
+    }
+    stage('Test') { 
+        // 
+    }
+    stage('Deploy') { 
+        // 
     }
 }
