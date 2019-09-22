@@ -4,9 +4,6 @@ node {
     }
     stage('Deploy') {
             sh '''
-            export IBMCLOUD_API_KEY=jRXN6KsKjnlAIhZXMgheLKadTZNLUhrgrHCGx6Ox2Tyh
-            ibmcloud login -a cloud.ibm.com -r us-south -g Default
-            ibmcloud ks cluster-config --cluster afKatageCluster
             kubectl apply -f ingressResource.yml
             '''
     }
