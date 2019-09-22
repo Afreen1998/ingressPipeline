@@ -4,6 +4,7 @@ node {
     }
     stage('Deploy') {
             sh '''
+            ls
             kubectl apply -f ingressResource.yml
             '''
     }
