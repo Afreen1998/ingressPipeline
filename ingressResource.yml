@@ -1,15 +1,14 @@
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: example-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: ingress
 spec:
- rules:
- - host: hello-world.info
-   http:
-     paths:
-     - path: /*
-       backend:
-         serviceName: web
-         servicePort: 8080
+  rules:
+  - host: example7.com
+    http:
+      paths:
+      - backend:
+          serviceName: analytics-server
+          servicePort: 9080
+        
