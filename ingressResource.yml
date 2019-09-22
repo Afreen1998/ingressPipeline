@@ -9,6 +9,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: analytics-server
-          servicePort: 9080
+          serviceName: nginx
+          servicePort: 80
         
