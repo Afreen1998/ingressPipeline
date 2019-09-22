@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:  kubectl.kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - host: example3.com
