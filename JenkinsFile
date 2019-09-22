@@ -3,6 +3,11 @@ node {
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Afreen1998/ingressPipeline']]])
     }
     stage('Deploy') {
-            sh "kubectl apply -f ingressResource.yml"
+            sh '''
+            export IBMCLOUD_API_KEY=jRXN6KsKjnlAIhZXMgheLKadTZNLUhrgrHCGx6Ox2Tyh
+            ibmcloud login -a cloud.ibm.com -r us-south -g Default
+            ibmcloud ks cluster-config --cluster afKatageCluster
+            kubectl apply -f ingressResource.yml
+            '''
     }
 }
