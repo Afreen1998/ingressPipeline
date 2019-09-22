@@ -4,8 +4,6 @@ node {
     }
     stage('Deploy') {
             sh "ls"
-            sh "vim ingressResource.yml"
-            sh ":wq"
             sh "kubectl apply -f ingressResource.yml"
     }
 }
