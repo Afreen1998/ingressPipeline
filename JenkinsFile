@@ -1,6 +1,10 @@
 node {  
     
-    stage('Deploy') {
-        echo "success"
+    stage('checkout') {
+       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Afreen1998/ingressPipeline']]])
 }
+ stage('deploy')
+ {
+    sh "ls"
+ }
 }
