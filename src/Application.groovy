@@ -75,10 +75,10 @@ def deployToKube(deployStage)
 //                 }
 //             }
             
-//         }
+          }
      } catch(deployError) {
         
-//         throw deployError
+         throw deployError
     }
  }
 
