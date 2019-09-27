@@ -20,7 +20,7 @@ def deploy(deployStage)
     try {
         //vaultSecrets=getSecretsFromVaultForDeployment(projectName, deployStage)
        // withEnv(vaultSecrets){
-            // deployToKube(deployStage)
+             deployToKube(deployStage)
             echo "success" + deployStage;
        // }
     } catch (err) {
@@ -28,26 +28,28 @@ def deploy(deployStage)
     }
 }
 
-// def deployToKube(deployStage)
-// {
-//      try{
-//         timeout(time:30, unit:'MINUTES') {
-//             handleNpmrc(deployStage)
-//             getGlobalEnvPropFiles()
+def deployToKube(deployStage)
+{
+     try{
+        timeout(time:30, unit:'MINUTES') {
+            // handleNpmrc(deployStage)
+            // getGlobalEnvPropFiles()
 
-//             def propsDir = getEnvPropsFileDir(deployStage)
-//             //IBM cloud details
+            def propsDir = getEnvPropsFileDir(deployStage)
+            echo "${propsDir}";
+            //IBM cloud details
 
-//             def bluemixApiKey = getBluemixApiKey(deployStage)
-//             def bluemixUserName = getBluemixUserName(deployStage)
-//             def bluemixUserPassword = getBluemixUserPassword(deployStage)
-//             def bluemixApiEndpoint = getBMApiEndpoint(deployStage)
-//             def region = getKubeClusterRegionString(deployStage)
-//             //kube details
+            //def bluemixApiKey = getBluemixApiKey(deployStage)
+            //def bluemixUserName = getBluemixUserName(deployStage)
+            //def bluemixUserPassword = getBluemixUserPassword(deployStage)
+            //def bluemixApiEndpoint = getBMApiEndpoint(deployStage)
+            //def region = getKubeClusterRegionString(deployStage)
+           // def region = "us-south";
+            //kube details
 
-//             def kubeApikey = getDestinationKubeProperties(deployStage, KUBE_APIKEY)
-//             def kubeNamespace = getDestinationKubeProperties(deployStage, KUBE_NAMESPACE)
-//             def kubeClusterName = getDestinationKubeProperties(deployStage, KUBE_CLUSTERNAME)
+            //def kubeApikey = getDestinationKubeProperties(deployStage, KUBE_APIKEY)
+            //def kubeNamespace = getDestinationKubeProperties(deployStage, KUBE_NAMESPACE)
+           // def kubeClusterName = getDestinationKubeProperties(deployStage, KUBE_CLUSTERNAME)
 
 //             // if (projectName.contains('bms-push') && (deployStage.contains('-yp') || deployStage.contains('-prod'))) {
 //             //     def dependentServiceSecrets = setDependentServiceSecrets(projectName, kubeNamespace, deployStage, serviceName)
@@ -81,10 +83,10 @@ def deploy(deployStage)
 // }
 
 
-// def getEnvPropsFileDir() {
+ def getEnvPropsFileDir() {
     
-//     return '${deployStage}/cluster'
-// }
+     return '${deployStage}/cluster'
+ }
 
 // def getBluemixApiKey(deployStage='not set') {
 //     // return if its located in vault and set as an environment variable

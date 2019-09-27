@@ -15,14 +15,15 @@ def deployStage = DeployEnvironment
 //  //checking change request for production
  stage('deploy')
  {
-   application.deploy(deployStage);
-//     deleteDir()
+   
+     deleteDir()
 //     sshagent([env.BLUEMPUS_SSHAGENT_KEY]) {
-//       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.ibm.com/afkatage/ingress_pipeline.git']]])
-//       application.deploy(deployStage);
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Afreen1998/ingress_resources']]])
+      sh "ls"
+      application.deploy(deployStage);
       
    }
 
      //}
 // }
-return this;
+
