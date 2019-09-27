@@ -13,14 +13,15 @@ def deployStage = DeployEnvironment
 // node (env.BMS_BUILD_AND_DEPLOY_SWARM_NODE) {
 // {
 //  //checking change request for production
-// stage('deploy')
-// {
+ stage('deploy')
+ {
+   application.deploy(deployStage);
 //     deleteDir()
 //     sshagent([env.BLUEMPUS_SSHAGENT_KEY]) {
 //       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.ibm.com/afkatage/ingress_pipeline.git']]])
 //       application.deploy(deployStage);
       
-//     }
+   }
 
-//     }
+     //}
 // }
