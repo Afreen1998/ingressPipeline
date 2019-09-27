@@ -85,7 +85,7 @@ def deployToKube(deployStage)
 
  def getEnvPropsFileDir(deployStage) {
     
-     return '${deployStage}/cluster'
+     return deployStage + '/cluster'
  }
 
 // def getBluemixApiKey(deployStage='not set') {
