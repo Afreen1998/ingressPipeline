@@ -10,7 +10,8 @@ fileLoader.withGit('https://github.com/Afreen1998/ingressPipeline.git', 'master'
 def deployStage = DeployEnvironment
 
 
-// node (env.BMS_BUILD_AND_DEPLOY_SWARM_NODE) {
+ node 
+  {
 // {
 //  //checking change request for production
  stage('deploy')
@@ -25,5 +26,5 @@ def deployStage = DeployEnvironment
    }
 
      //}
-// }
+ }
 
