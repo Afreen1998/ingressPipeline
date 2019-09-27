@@ -1,0 +1,26 @@
+import org.jvnet.hudson.plugins.groovypostbuild.GroovyPostbuildAction;
+def application,environment;
+fileLoader.withGit('https://github.com/Afreen1998/ingressPipeline.git', 'master',null, ' ') {
+  application = fileLoader.load('src/Application');
+   environment = fileLoader.load('src/Environment');
+   vault = fileLoader.load('src/Vault');
+ }
+
+//def deployStage = environment.getBluemixEnvironment()
+def deployStage = DeployEnvironment
+
+
+// node (env.BMS_BUILD_AND_DEPLOY_SWARM_NODE) {
+// {
+//  //checking change request for production
+// stage('deploy')
+// {
+//     deleteDir()
+//     sshagent([env.BLUEMPUS_SSHAGENT_KEY]) {
+//       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.ibm.com/afkatage/ingress_pipeline.git']]])
+//       application.deploy(deployStage);
+      
+//     }
+
+//     }
+// }
