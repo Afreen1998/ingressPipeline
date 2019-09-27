@@ -76,11 +76,11 @@ def deployToKube(deployStage)
 //             }
             
 //         }
-//     } catch(deployError) {
+     } catch(deployError) {
         
 //         throw deployError
-//     }
-// }
+    }
+ }
 
 
  def getEnvPropsFileDir() {
