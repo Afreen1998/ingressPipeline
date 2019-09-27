@@ -83,7 +83,7 @@ def deployToKube(deployStage)
  }
 
 
- def getEnvPropsFileDir() {
+ def getEnvPropsFileDir(deployStage) {
     
      return '${deployStage}/cluster'
  }
