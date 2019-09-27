@@ -1,6 +1,6 @@
 import org.jvnet.hudson.plugins.groovypostbuild.GroovyPostbuildAction;
 def application,environment;
-fileLoader.withGit('https://github.com/Afreen1998/ingressPipeline.git', 'master',null, 'Master') {
+fileLoader.withGit('https://github.com/Afreen1998/ingressPipeline.git', 'master',null, '') {
   application = fileLoader.load('src/Application');
    environment = fileLoader.load('src/Environment');
    vault = fileLoader.load('src/Vault');
@@ -25,3 +25,4 @@ def deployStage = DeployEnvironment
 
      //}
 // }
+return this;
