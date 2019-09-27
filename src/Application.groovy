@@ -40,14 +40,17 @@ def deployToKube(deployStage)
             //IBM cloud details
 
             //def bluemixApiKey = getBluemixApiKey(deployStage)
+            //echo "${bluemixApiKey}";
             //def bluemixUserName = getBluemixUserName(deployStage)
             //def bluemixUserPassword = getBluemixUserPassword(deployStage)
-            //def bluemixApiEndpoint = getBMApiEndpoint(deployStage)
+           // def bluemixApiEndpoint = getBMApiEndpoint(deployStage)
+            //echo "${bluemixApiEndpoint}";
             //def region = getKubeClusterRegionString(deployStage)
            // def region = "us-south";
             //kube details
 
-            //def kubeApikey = getDestinationKubeProperties(deployStage, KUBE_APIKEY)
+            def kubeApikey = getDestinationKubeProperties(deployStage, KUBE_APIKEY)
+            echo "${kubeApikey}";
             //def kubeNamespace = getDestinationKubeProperties(deployStage, KUBE_NAMESPACE)
            // def kubeClusterName = getDestinationKubeProperties(deployStage, KUBE_CLUSTERNAME)
 
@@ -88,20 +91,20 @@ def deployToKube(deployStage)
      return deployStage + '/cluster'
  }
 
-// def getBluemixApiKey(deployStage='not set') {
-//     // return if its located in vault and set as an environment variable
-//     if(env.BLUEMIX_APIKEY!=null){
-//         println "BLUEMIX_APIKEY from Vault "
-//         def api = sh script: 'set +x ; bdeploy decrypt -k ${bms_decrypt} -s ' + env.BLUEMIX_APIKEY + ' ; set -x', returnStdout: true
-//         api = api.trim()
-//         return api
-//         }
-//     def propsDir = getEnvPropsFileDir()
-//     println "BLUEMIX_APIKEY not set through env"
-//     def api = sh script: 'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p cf_apikey', returnStdout: true
-//     api = api.trim()
-//     return api
-// }
+//  def getBluemixApiKey(deployStage='not set') {
+// //     // return if its located in vault and set as an environment variable
+// //     if(env.BLUEMIX_APIKEY!=null){
+// //         println "BLUEMIX_APIKEY from Vault "
+// //         def api = sh script: 'set +x ; bdeploy decrypt -k ${bms_decrypt} -s ' + env.BLUEMIX_APIKEY + ' ; set -x', returnStdout: true
+// //         api = api.trim()
+// //         return api
+// //         }
+//      def propsDir = getEnvPropsFileDir(deployStage)
+// //     println "BLUEMIX_APIKEY not set through env"
+//       def api = sh script: 'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p cf_apikey', returnStdout: true
+// //     api = api.trim()
+// //     return api
+// // }
 
 // def getBluemixUserName(deployStage='not set') {
 //     if(env.BLUEMIX_USERID!=null){
@@ -146,10 +149,10 @@ def deployToKube(deployStage)
 //     }
 // }
 
-// def getDestinationKubeProperties(deployStage, property) {
-//     def propsDir = getEnvPropsFileDir()
+ def getDestinationKubeProperties(deployStage, property) {
+    def propsDir = getEnvPropsFileDir()
 
-//     switch(property){
+     switch(property){
 //         case KUBE_ORG:
 //             def kube_org = sh script: 'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p kube_org', returnStdout: true
 //             kube_org = kube_org.trim()
@@ -162,13 +165,13 @@ def deployToKube(deployStage)
 //             def kube_space_guid = sh script: 'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p kube_space_guid', returnStdout: true
 //             kube_space_guid = kube_space_guid.trim()
 //             return kube_space_guid
-//         case KUBE_APIKEY:
+         case KUBE_APIKEY:
 //             // Its kept in vault and set as env variable in the Jenkinsfile
 //             if(env.BLUEMIX_APIKEY!=null){
 //                 return getBluemixApiKey(deployStage)
 //             }
-//             def kube_apikey = sh script:'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p kube_apikey', returnStdout: true
-//             kube_apikey = kube_apikey.trim()
+             def kube_apikey = sh script:'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p kube_apikey', returnStdout: true
+             kube_apikey = kube_apikey.trim()
 //             if(kube_apikey==''){
 //                 print "kube_apikey is empty, taking value from cf_apikey"
 //                 kube_apikey = sh script: 'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p cf_apikey', returnStdout: true
@@ -182,9 +185,9 @@ def deployToKube(deployStage)
 //             def kube_clusterName = sh script:  'bdeploy parse -k ${bms_decrypt} -s ' + propsDir + '/config.json -p kube_cluster_name', returnStdout: true
 //             kube_clusterName = kube_clusterName.trim()
 //             return kube_clusterName
-//     }
+    }
 
-// }
+ }
 
 // // def getKubeClusterRegionString(deployStage) {
 // //     switch(deployStage){
