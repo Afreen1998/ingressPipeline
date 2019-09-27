@@ -150,7 +150,7 @@ def deployToKube(deployStage)
 // }
 
  def getDestinationKubeProperties(deployStage, property) {
-    def propsDir = getEnvPropsFileDir()
+    def propsDir = getEnvPropsFileDir(deployStage)
 
      switch(property){
 //         case KUBE_ORG:
